@@ -13,5 +13,6 @@ void PrintHelp();
 void TestGetDeviceNames(bool bVerbose);
 void TesOpenCloseDevice(bool bVerbose);
 void TestCapabilities(bool bVerbose);
+void TestCapabilities2(bool bVerbose);
 
 #endif // TESTS_H

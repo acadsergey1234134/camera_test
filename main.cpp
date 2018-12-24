@@ -13,6 +13,7 @@ int main(int argc, char *argv[])
     bool bTestGetDeviceNames = false;
     bool bTestOpenclose = false;
     bool bGetCapability2 = false;
+    bool bGetCapability = false;
 
     for (int arg = 0; arg < argc; ++arg) {
         std::string option = argv[arg];
@@ -35,10 +36,17 @@ int main(int argc, char *argv[])
         if (kGetCapability2 == option) {
             bGetCapability2 = true;
         }
+
+        if (kGetCapability == option) {
+            bGetCapability = true;
+        }
+
+
     }
 
     bHelp = (!bTestOpenclose)
             && (!bTestGetDeviceNames)
+            && (!bGetCapability)
             && (!bGetCapability2);
 
     if (bVerbose) {
@@ -59,8 +67,12 @@ int main(int argc, char *argv[])
             TesOpenCloseDevice(bVerbose);
         }
 
-        if (bGetCapability2) {
+        if (bGetCapability) {
             TestCapabilities(bVerbose);
+        }
+
+        if (bGetCapability2) {
+            TestCapabilities2(bVerbose);
         }
     }
     return 0;
