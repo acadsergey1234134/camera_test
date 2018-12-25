@@ -48,11 +48,12 @@ void GetCapability(bool /*bVerbose*/, const std::string& sDeviceName, int fd)
               << " Card:" << caps.card << std::endl
               << " Bus:" <<  caps.bus_info << std::endl
               << " Version:"<< verMaj << "." << verMin << std::endl
-              << " Capabilities:" << std::hex << "0x"<< caps.capabilities
+              << " Capabilities:" << std::hex << "0x"<< caps.capabilities  << std::endl
+              << "    V4L2_CAP_VIDEO_CAPTURE:" << (caps.capabilities & V4L2_CAP_VIDEO_CAPTURE) << std::endl
+              << "    V4L2_CAP_VIDEO_CAPTURE_MPLANE:" << (caps.capabilities & V4L2_CAP_VIDEO_CAPTURE_MPLANE) << std::endl
+              << "    V4L2_CAP_VIDEO_OUTPUT:" << (caps.capabilities & V4L2_CAP_VIDEO_OUTPUT) << std::endl
+              << "    V4L2_CAP_VIDEO_OUTPUT_MPLANE:" << (caps.capabilities & V4L2_CAP_VIDEO_OUTPUT_MPLANE) << std::endl
               << std::endl;
-
-
-
 
     struct v4l2_cropcap cropcap = {0};
     cropcap.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
@@ -65,17 +66,18 @@ void GetCapability(bool /*bVerbose*/, const std::string& sDeviceName, int fd)
     }
 
     std::cout << "Camera Cropping" << std::endl
-              << "Bounds:"
-              << " w:" << cropcap.bounds.width
-              << " h:" << cropcap.bounds.height
-              << " l:" << cropcap.bounds.left
-              << " t:" << cropcap.bounds.top << std::endl
-              << "Default:"
-              << " w:" << cropcap.defrect.width
-              << " h:" << cropcap.defrect.height
-              << " l:" << cropcap.defrect.left
-              << " t:" << cropcap.defrect.top << std::endl
-              << "Aspect:"
+              << "  Bounds:"
+              << std::dec
+              << "    w:" << cropcap.bounds.width
+              << "    h:" << cropcap.bounds.height
+              << "    l:" << cropcap.bounds.left
+              << "    t:" << cropcap.bounds.top << std::endl
+              << " Default:"
+              << "    w:" << cropcap.defrect.width
+              << "    h:" << cropcap.defrect.height
+              << "    l:" << cropcap.defrect.left
+              << "    t:" << cropcap.defrect.top << std::endl
+              << "  Aspect:"
               << cropcap.pixelaspect.numerator
               << "/" << cropcap.pixelaspect.denominator
               << std::endl;
