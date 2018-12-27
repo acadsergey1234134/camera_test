@@ -1,5 +1,7 @@
 #include "tests.h"
 
+#include "videodev_qt.h"
+
 //linux
 #include <unistd.h>
 #include <sys/stat.h>
@@ -8,14 +10,17 @@
 #include <iostream>
 #include <string>
 
+
 void PrintHelp()
 {
     std::cout << " Command line options:" << std::endl
-              << "-" << kOptionVerbose << ": verbose mode" << std::endl
-              << "-" << kOptionDeviceNames << ": list device names" << std::endl
-              << "-" << kOptionOpenClose << ": open - close all the available video devices" << std::endl
-              << "-" << kGetCapability << ": get video devices capabilities" << std::endl
-              << "-" << kGetCapability2 << ": get video devices capabilities ver 2" << std::endl
+              << "-" << kOptionVerbose       << ": verbose mode" << std::endl
+              << "-" << kOptionDeviceNames   << ": list device names" << std::endl
+              << "-" << kOptionOpenClose     << ": open - close all the available video devices" << std::endl
+              << "-" << kGetCapability       << ": get video devices capabilities" << std::endl
+              << "-" << kGetCapability2      << ": get video devices capabilities ver 2" << std::endl
+              << "-" << kOptionQtDeviceNames << ": QT get device names" << std::endl
+              << "test parameters:" << std::endl
               << kDeviceName << ":" << "devicename" << std::endl
               << kFormat << ":" << "format" << std::endl;
 }
@@ -114,4 +119,11 @@ void TestCapabilities2(bool bVerbose)
     if(bVerbose) {
         std::cout << '[' << __PRETTY_FUNCTION__ <<  ':' << __LINE__ << ']' << "<<<" << std::endl;
     }
+}
+
+
+
+void TestQtGetDeviceNames(bool bVerbose)
+{
+    linuxvideodevqt::GetDeviceNames(true);
 }

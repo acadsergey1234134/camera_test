@@ -6,8 +6,6 @@
 #include "videodev1.h"
 #include "videodev2.h"
 
-
-
 void PrintHelp();
 
 void TestGetDeviceNames(bool bVerbose);
@@ -19,5 +17,8 @@ void TestCapabilities(bool bVerbose, const std::string& sDeviceName);
 
 void TestCapability2(bool bVerbose, const std::string& sDeviceName);
 void TestCapabilities2(bool bVerbose);
+
+void TestQtGetDeviceNames(bool bVerbose);
+
 
 #endif // TESTS_H

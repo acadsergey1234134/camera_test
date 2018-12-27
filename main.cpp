@@ -26,6 +26,7 @@ int main(int argc, char *argv[])
     bool bTestOpenclose = false;
     bool bGetCapability2 = false;
     bool bGetCapability = false;
+    bool bQtGetDeviceNames = false;
 
     std::string sTask;
     std::string sDevice;
@@ -64,13 +65,17 @@ int main(int argc, char *argv[])
             bGetCapability = true;
         }
 
+        if (kOptionQtDeviceNames == sTask) {
+            bQtGetDeviceNames = true;
+        }
 
     }
 
     bHelp = (!bTestOpenclose)
             && (!bTestGetDeviceNames)
             && (!bGetCapability)
-            && (!bGetCapability2);
+            && (!bGetCapability2)
+            && (!bQtGetDeviceNames);
 
     if (bVerbose) {
         for (int arg = 0; arg < argc; ++arg) {
@@ -105,6 +110,11 @@ int main(int argc, char *argv[])
                 TestCapability2(bVerbose, sDevice);
             }
         }
+
+        if (bQtGetDeviceNames) {
+            TestQtGetDeviceNames(bVerbose);
+        }
+
     }
     return 0;
 }

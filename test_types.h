@@ -12,6 +12,9 @@ extern const char kGetCapability[];
 extern const char kDeviceName[];
 extern const char kFormat[];
 
+extern const char kOptionQtDeviceNames[];
+
+
 typedef std::vector<std::string> TDeviceNames;
 
 #endif // TEST_TYPES_H
